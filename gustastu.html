@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A little secret!</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:antiquewhite;
+        overflow: hidden; /* Prevents horizontal scrolling */
+        position: relative;
+    }
+    #message-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    #message {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    #meaning-popup {
+        display: none;
+        position: fixed;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ac3232;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        color: black;
+    }
+    #show-meaning-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .heart {
+        position: absolute;
+        color: rgb(219, 86, 86);
+        animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-30px); }
+        100% { transform: translateY(0); }
+    }
+
+    #pop-message {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: #ffa500;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+    }
+</style>
+</head>
+<body>
+<div id="message-container">
+    <div id="message"><p>Que horas son, mi corazón<br>
+        Me gusta viajar, me gustas tu.<br>
+        Me gusta la mañana, me gustas tu.<br>
+        Me gusta el viento, me gustas tu.<br>
+        Me gusta soñar, me gustas tu.<br>
+        Me gusta camelar, me gustas tu.<br>
+        Me gusta la mar, me gustas tu.<br>
+        Me gusta la lluvia, me gustas tu.<br>
+        Me gusta la noche, me gustas tu.<br>
+        Me gusta el fuego, me gustas tu.<br>
+        Me gusta Guatemala, me gustas tu.<br>
+        Me gusta volver, me gustas tu.<br>
+        Que voy a hacer..</p></div>
+    <button id="show-meaning-btn" onclick="showMeaning()">Curious?</button>
+    <div id="meaning-popup">
+        <p>What time is it, my heart<br>
+        I like to travel, I like you.<br>
+        I like the morning, I like you.<br>
+        I like the wind, I like you.<br>
+        I like to dream, I like you.<br>
+        I like to fool around, I like you.<br>
+        I like the sea, I like you.<br>
+        I like the rain, I like you.<br>
+        I like the night, I like you.<br>
+        I like fire, I like you.<br>
+        I like Guatemala, I like you.<br>
+        I like coming back, I like you.<br>
+        What I am going to do..</p>
+    </div>
+    <div id="pop-message">You smiling<br> vashishta? </div>
+</div>
+
+<script>
+    function showMeaning() {
+        var meaningPopup = document.getElementById("meaning-popup");
+        var buttonElement = document.getElementById("show-meaning-btn");
+        var popMessage = document.getElementById("pop-message");
+
+        if (meaningPopup.style.display === "none") {
+            meaningPopup.style.display = "block";
+            buttonElement.textContent = "Spanish?";
+            createHearts();
+            setTimeout(function() {
+                popMessage.style.display = "block";
+            }, 4000); // Show the message after 5 seconds
+        } else {
+            meaningPopup.style.display = "none";
+            buttonElement.textContent = "Curious?";
+        }
+    }
+
+    function createHearts() {
+        var container = document.body;
+        for (var i = 0; i < 20; i++) {
+            var heart = document.createElement("span");
+            heart.innerHTML = "&hearts;";
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.top = Math.random() * 100 + "%";
+            heart.style.fontSize = Math.floor(Math.random() * 20 + 10) + "px";
+            heart.style.animationDelay = Math.random() * 3 + "s";
+            container.appendChild(heart);
+        }
+    }
+</script>
+</body>
+</html>
